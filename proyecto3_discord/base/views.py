@@ -183,3 +183,7 @@ def topics_page(request):
     query_param = request.GET.get('q') if request.GET.get('q') else ''
     topics = Topic.objects.filter(name__icontains=query_param)
     return render(request, 'base/topics.html',{'topics': topics})
+
+def activity_page(request):
+    room_messages = Message.objects.all()
+    return render(request, 'base/activity.html',{'room_messages': room_messages})
