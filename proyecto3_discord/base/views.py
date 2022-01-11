@@ -67,11 +67,11 @@ def home(request):
     rooms = Room.objects.filter(Q(topic__name__icontains=query_param)
                                 | Q(name__icontains=query_param)
                                 | Q(description__icontains=query_param))
-    topics = Topic.objects.all()
-    room_count = rooms.count()
+    topics = Topic.objects.filter(name__icontains=query_param)[:5]
+    topics_count = Topic.objects.all().count()
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=query_param))
     
-    context = {'rooms': rooms, 'topics': topics, 'room_count': room_count, 'room_messages': room_messages}
+    context = {'rooms': rooms, 'topics': topics, 'topics_count': topics_count, 'room_messages': room_messages}
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
@@ -178,3 +178,8 @@ def update_user(request):
             form.save()
             return redirect('user-profile', pk=user.id)
     return render(request, 'base/update-user.html', {'form':form})
+
+def topics_page(request):
+    query_param = request.GET.get('q') if request.GET.get('q') else ''
+    topics = Topic.objects.filter(name__icontains=query_param)
+    return render(request, 'base/topics.html',{'topics': topics})
