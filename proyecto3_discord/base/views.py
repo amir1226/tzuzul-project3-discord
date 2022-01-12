@@ -8,12 +8,6 @@ from django.contrib import messages
 from .models import Message, Room, Topic, User
 from .forms import RoomForm, UserForm
 
-""" rooms = [
-    {'id': 1, 'name': 'Lets learn .net!'},
-    {'id': 2, 'name': 'Lets learn aws!'},
-    {'id': 3, 'name': 'Lets learn linux!'}
-] """
-
 def login_page(request):
     
     page= 'login'
