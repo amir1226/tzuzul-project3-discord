@@ -88,7 +88,8 @@ def user_profile(request, pk):
     rooms = user.room_set.all()
     room_messages = user.message_set.all()
     topics = Topic.objects.all()
-    context = {'user': user, 'rooms': rooms, 'room_messages': room_messages, 'topics': topics}
+    topics_count = topics.count()
+    context = {'user': user, 'rooms': rooms, 'topics_count': topics_count, 'room_messages': room_messages, 'topics': topics}
     return render(request, 'base/profile.html', context)
 
 @login_required(login_url='login')
