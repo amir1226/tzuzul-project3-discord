@@ -1,7 +1,7 @@
 # Discord for student 
 
-App deployed: https://final-project-django-tzuzul.ue.r.appspot.com/
-Technologies: Django, Django Rest Framework, PostgreSql, Docker, AWS S3 and GCP
+**App deployed:** https://final-project-django-tzuzul.ue.r.appspot.com/ <br/>
+**Technologies:** Django, Django Rest Framework, PostgreSQL, Docker, AWS S3 and GCP
 
 ## Local Development Environment
 1. Create an S3 service instance on AWS (you may change the config to store the images on local environment and remove all environment variables related to AWS). [Permissions for the S3 bucket](https://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html)
