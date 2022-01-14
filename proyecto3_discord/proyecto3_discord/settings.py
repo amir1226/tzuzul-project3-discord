@@ -32,7 +32,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DJANGO_DEBUG', default=False)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'final-project-django-tzuzul.ue.r.appspot.com', # must add the app engine (project-id) domain here
+    '127.0.0.1', # for local testing 
+]
 
 
 # Application definition
@@ -88,7 +91,14 @@ WSGI_APPLICATION = 'proyecto3_discord.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db()
+    'default': {
+      'ENGINE': 'django.db.backends.postgresql',
+      'HOST': env('DB_HOST'),
+      'PORT': env('DB_PORT'),
+      'NAME': env('DB_NAME'),
+      'USER': env('DB_USER'),
+      'PASSWORD': env('DB_PASSWORD')
+    }
 }
 
 # Password validation
@@ -125,7 +135,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = env('STATIC_URL')
+
+# collectstatic directory (located OUTSIDE the base directory)
+# TODO: configure the name and path to your static bucket directory (where collectstatic will copy to)
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'final-project-static')
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
