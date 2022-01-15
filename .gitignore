@@ -5,3 +5,4 @@ proyecto3_discord/base/__pycache__/
 proyecto3_discord/base/migrations/__pycache__/
 proyecto3_discord/base/api/__pycache__/
 postgres/
+proyecto3_discord/base/tests/__pycache__
