@@ -84,7 +84,9 @@ def room(request, pk):
     return render(request, 'base/room.html', context)
 
 def user_profile(request, pk):
-    user = User.objects.get(id=pk)
+    user = User.objects.filter(id=pk).first()
+    if user is None:
+        return HttpResponse(f'Not user found with id {pk}', status =404)  
     rooms = user.room_set.all()
     room_messages = user.message_set.all()
     topics = Topic.objects.all()
