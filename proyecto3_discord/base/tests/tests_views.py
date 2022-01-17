@@ -1,4 +1,3 @@
-from email import message
 from django.test import TestCase, Client
 from django.urls import reverse
 from base import models
